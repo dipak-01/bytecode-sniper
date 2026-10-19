@@ -1,0 +1,20 @@
+{
+  "network": {
+    "chainId": 11155111,
+    "rpcUrl": "https://rpc.sepolia.org",
+    "explorerUrl": "https://sepolia.etherscan.io"
+  },
+  "telegraph": {
+    "apiUrl": "https://api.telegraphprotocol.com",
+    "contractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "intents": {
+    "bytecodeAnalysis": "int-001",
+    "drainerDetection": "int-002"
+  },
+  "economic": {
+    "currency": "USDC",
+    "analysisCost": "0.10",
+    "note": "PLACEHOLDER - Mainnet deployment will use real USDC on Polygon or Solana"
+  }
+}
