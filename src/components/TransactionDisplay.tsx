@@ -15,9 +15,9 @@ export function TransactionDisplay({
 }: TransactionDisplayProps) {
   if (!transactionHash) {
     return (
-      <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-4">
-        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-          <span>ℹ️</span>
+      <div className="rounded-2xl border border-gray-600/50 bg-gray-800/30 p-6 backdrop-blur-sm">
+        <div className="flex items-center gap-3 text-gray-400">
+          <span className="text-2xl">ℹ️</span>
           <p className="text-sm">
             Local analysis only - Telegraph integration requires wallet connection
           </p>
@@ -30,55 +30,61 @@ export function TransactionDisplay({
   const date = new Date(timestamp);
 
   return (
-    <div className="rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 p-6">
-      <h3 className="text-lg font-semibold mb-4 text-blue-900 dark:text-blue-100">
-        📊 Transaction Transparency
+    <div className="rounded-2xl border border-purple-500/50 bg-purple-500/10 p-8 backdrop-blur-sm">
+      <h3 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
+        <span>📊</span>
+        Transaction Transparency
       </h3>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {/* Transaction Hash */}
         <div>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Transaction Hash</p>
+          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">Transaction Hash</p>
           <a
             href={explorerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-blue-600 dark:text-blue-400 hover:underline break-all"
+            className="font-mono text-sm text-purple-400 hover:text-purple-300 break-all flex items-center gap-2 group"
           >
-            {transactionHash}
+            <span>{transactionHash}</span>
+            <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
           </a>
         </div>
 
         {/* Provider ID */}
         {providerId && (
           <div>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Provider ID</p>
-            <p className="font-mono text-sm">{providerId}</p>
+            <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">Provider ID</p>
+            <p className="font-mono text-sm text-gray-300">{providerId}</p>
           </div>
         )}
 
         {/* Cost */}
         <div>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Intelligence Cost</p>
-          <p className="text-sm">
-            <span className="font-semibold">{cost}</span> {networkConfig.economic.currency}
-            <span className="ml-2 text-xs opacity-70">(Placeholder)</span>
-          </p>
+          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">Intelligence Cost</p>
+          <div className="flex items-center gap-3">
+            <p className="text-lg font-bold text-white">
+              {cost} <span className="text-sm text-gray-400">{networkConfig.economic.currency}</span>
+            </p>
+            <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">Placeholder</span>
+          </div>
         </div>
 
         {/* Timestamp */}
         <div>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Timestamp</p>
-          <p className="text-sm">{date.toLocaleString()}</p>
+          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider">Timestamp</p>
+          <p className="text-sm text-gray-300">{date.toLocaleString()}</p>
         </div>
 
         {/* Explorer Link Button */}
-        <div className="pt-2">
+        <div className="pt-4">
           <a
             href={explorerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white rounded-lg font-semibold transition-all shadow-lg shadow-purple-500/50"
           >
             View on Sepolia Explorer
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

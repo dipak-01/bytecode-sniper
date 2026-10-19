@@ -6,29 +6,34 @@ import './index.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white dark:bg-gray-950">
+      <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #0a0a0f 0%, #16171d 100%)' }}>
         {/* Header */}
-        <header className="border-b border-gray-200 dark:border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <header className="border-b" style={{ borderColor: 'rgba(170, 59, 255, 0.2)' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex items-center justify-between">
-              <Link to="/" className="flex items-center gap-2">
-                <span className="text-2xl">🎯</span>
-                <span className="text-xl font-bold text-gray-900 dark:text-white">
-                  Bytecode Sniper
-                </span>
+              <Link to="/" className="flex items-center gap-3 group">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-2xl glow">
+                  🎯
+                </div>
+                <div>
+                  <span className="text-2xl font-bold gradient-text">
+                    Bytecode Sniper
+                  </span>
+                  <div className="text-xs text-gray-500">Powered by Telegraph Protocol</div>
+                </div>
               </Link>
               <nav className="flex items-center gap-6">
                 <Link
                   to="/"
-                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-purple-400 transition-colors font-medium"
                 >
                   Home
                 </Link>
                 <Link
                   to="/analyze"
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                  className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold rounded-lg transition-all glow"
                 >
-                  Analyze
+                  Analyze Contract
                 </Link>
               </nav>
             </div>
@@ -44,28 +49,28 @@ function App() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-gray-200 dark:border-gray-800 mt-20">
+        <footer className="border-t mt-20" style={{ borderColor: 'rgba(170, 59, 255, 0.2)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Built for Telegraph Protocol Hackathon Season II • Oct 19, 2026
+              <p className="text-sm text-gray-500">
+                Built for Telegraph Protocol Hackathon Season II • October 2026
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-6">
                 <a
                   href="https://hackathon.telegraphprotocol.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-sm text-purple-400 hover:text-purple-300 transition-colors font-medium"
                 >
-                  Telegraph Protocol
+                  Telegraph Protocol ↗
                 </a>
                 <a
                   href="https://sepolia.etherscan.io/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-sm text-purple-400 hover:text-purple-300 transition-colors font-medium"
                 >
-                  Sepolia Explorer
+                  Sepolia Explorer ↗
                 </a>
               </div>
             </div>

@@ -1,7 +1,7 @@
 {
   "network": {
     "chainId": 11155111,
-    "rpcUrl": "https://rpc.sepolia.org",
+    "rpcUrl": "https://ethereum-sepolia-rpc.publicnode.com",
     "explorerUrl": "https://sepolia.etherscan.io"
   },
   "telegraph": {

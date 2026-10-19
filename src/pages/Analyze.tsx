@@ -51,21 +51,25 @@ export function Analyze() {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+    <div className="max-w-5xl mx-auto">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <div className="inline-block mb-4 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full text-purple-400 text-sm font-semibold">
+          🕵️ Autonomous Security Analysis
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
           Analyze Contract Bytecode
         </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Autonomous security analysis through Telegraph Protocol
+        <p className="text-gray-400 text-lg">
+          Secure your trade with Telegraph Protocol intelligence
         </p>
       </div>
 
       {/* Input Form */}
-      <div className="max-w-lg mx-auto">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="contractAddress" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <div className="mb-12">
+        <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
+          <div className="space-y-2">
+            <label htmlFor="contractAddress" className="block text-sm font-semibold text-gray-300">
               Contract Address
             </label>
             <input
@@ -74,22 +78,26 @@ export function Analyze() {
               value={contractAddress}
               onChange={(e) => setContractAddress(e.target.value)}
               placeholder="0x..."
-              className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white font-mono"
+              className="w-full px-4 py-4 bg-gray-800/50 border border-purple-500/30 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white font-mono text-lg transition-all"
+              style={{ colorScheme: 'dark' }}
             />
+            <p className="text-xs text-gray-500">
+              Enter any Sepolia contract address to analyze
+            </p>
           </div>
           <button
             type="submit"
-            disabled={loading}
-            className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+            disabled={loading || !contractAddress}
+            className="w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 disabled:from-gray-700 disabled:to-gray-800 disabled:cursor-not-allowed text-white text-lg font-semibold rounded-xl transition-all glow shadow-lg shadow-purple-500/50 flex items-center justify-center gap-3"
           >
             {loading ? (
               <>
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
                 Analyzing...
               </>
             ) : (
               <>
-                🔍 Analyze
+                🔍 Analyze Contract
               </>
             )}
           </button>
@@ -98,29 +106,39 @@ export function Analyze() {
 
       {/* Error Message */}
       {error && (
-        <div className="max-w-lg mx-auto rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4">
-          <p className="text-red-700 dark:text-red-400">{error}</p>
-          <button
-            onClick={() => setError(null)}
-            className="mt-2 text-sm text-red-600 dark:text-red-300 hover:underline"
-          >
-            Dismiss
-          </button>
+        <div className="max-w-2xl mx-auto rounded-xl border border-red-500/50 bg-red-500/10 p-6 backdrop-blur-sm">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">⚠️</div>
+            <div className="flex-1">
+              <p className="text-red-400 font-semibold">{error}</p>
+              <button
+                onClick={() => setError(null)}
+                className="mt-2 text-sm text-red-400 hover:text-red-300 font-medium"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
       {/* Analysis Results */}
       {result && (
-        <div className="max-w-4xl mx-auto">
-          <button
-            onClick={() => navigate('/')}
-            className="mb-4 text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-2"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            New Analysis
-          </button>
+        <div className="animate-fadeIn">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold text-white">
+              Analysis Results
+            </h2>
+            <button
+              onClick={() => navigate('/')}
+              className="text-purple-400 hover:text-purple-300 font-medium flex items-center gap-2 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              New Analysis
+            </button>
+          </div>
           <AnalysisPanel
             result={result}
             providers={providers}

@@ -16,8 +16,8 @@ export function AnalysisPanel({ result, providers, loading, error }: AnalysisPan
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
-        <p className="text-gray-600 dark:text-gray-400 animate-pulse">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600 mb-6"></div>
+        <p className="text-gray-300 text-lg animate-pulse">
           Purchasing intelligence through Telegraph Protocol...
         </p>
       </div>
@@ -26,11 +26,11 @@ export function AnalysisPanel({ result, providers, loading, error }: AnalysisPan
 
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-6">
-        <h3 className="text-lg font-semibold text-red-700 dark:text-red-400 mb-2">
+      <div className="rounded-2xl border border-red-500/50 bg-red-500/10 p-8 backdrop-blur-sm">
+        <h3 className="text-xl font-semibold text-red-400 mb-3">
           Analysis Failed
         </h3>
-        <p className="text-red-600 dark:text-red-300">{error}</p>
+        <p className="text-red-300">{error}</p>
       </div>
     );
   }
@@ -38,11 +38,11 @@ export function AnalysisPanel({ result, providers, loading, error }: AnalysisPan
   if (!result) {
     return (
       <div className="flex flex-col items-center justify-center py-20 opacity-60">
-        <div className="text-6xl mb-4">🔍</div>
-        <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+        <div className="text-7xl mb-6">🔍</div>
+        <h3 className="text-2xl font-semibold text-gray-300">
           Ready to Analyze
         </h3>
-        <p className="text-gray-500 dark:text-gray-400 max-w-md text-center mt-2">
+        <p className="text-gray-500 max-w-md text-center mt-3 leading-relaxed">
           Enter a contract address above to run autonomous bytecode analysis through the
           Telegraph Protocol
         </p>
@@ -51,7 +51,7 @@ export function AnalysisPanel({ result, providers, loading, error }: AnalysisPan
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Mechanism Disclosure */}
       <MechanismDisclosure />
 
@@ -77,27 +77,30 @@ export function AnalysisPanel({ result, providers, loading, error }: AnalysisPan
       />
 
       {/* Findings & Reasoning */}
-      <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6">
-        <h3 className="text-lg font-semibold mb-4">🔍 Analysis Findings</h3>
+      <div className="rounded-2xl border border-purple-500/30 bg-purple-500/5 p-8 backdrop-blur-sm">
+        <h3 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
+          <span>🔍</span>
+          Analysis Findings
+        </h3>
 
         {result.findings.length > 0 ? (
-          <ul className="space-y-2 mb-4">
+          <ul className="space-y-3 mb-6">
             {result.findings.map((finding: string, index: number) => (
-              <li key={index} className="flex items-start gap-2 text-sm">
-                <span className="text-blue-500 mt-0.5">•</span>
-                <span className="text-gray-700 dark:text-gray-300">{finding}</span>
+              <li key={index} className="flex items-start gap-3 text-sm">
+                <span className="text-purple-400 mt-1 font-bold">•</span>
+                <span className="text-gray-300 leading-relaxed">{finding}</span>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-gray-400 mb-6">
             No findings to display
           </p>
         )}
 
-        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mb-1">REASONING</p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+        <div className="mt-6 pt-6 border-t border-purple-500/20">
+          <p className="text-xs text-purple-400 font-bold mb-2 tracking-wider">REASONING</p>
+          <p className="text-sm text-gray-300 leading-relaxed">
             {result.reasoning}
           </p>
         </div>

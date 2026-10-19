@@ -1,10 +1,14 @@
 # Bytecode Sniper
 
-Autonomous pre-trade bytecode analysis through the Telegraph Protocol.
+🎯 **Autonomous pre-trade bytecode analysis through the Telegraph Protocol**
+
+🚀 **Live Demo**: https://bytecode-sniper.vercel.app
 
 ## Overview
 
 Bytecode Sniper is an autonomous security agent that purchases bytecode analysis and drainer detection intelligence through the Telegraph Protocol BEFORE executing trades. This helps protect DeFi traders from rug pulls and drainer attacks by providing real-time security analysis of smart contracts.
+
+**Built for**: Telegraph Protocol Hackathon Season II (October 2026)
 
 ## Why This Wins
 
